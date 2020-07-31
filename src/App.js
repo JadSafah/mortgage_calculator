@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Dropdown from './Dropdown';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const fruits= [
+  {
+      id:1,
+      value:"Apple"
+  },
+  {
+      id:2,
+      value:"Banana"
+  },
+  {
+      id:3,
+      value:"Orange"
+  }];
+
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
+  
+  render() {
+    return (
+      <div className="App">
+        <h1>Mortage Calculator</h1>
+          <h2>Payment Plan</h2>
+          <Dropdown items={fruits}/>
+      </div>
+      
+    )
+  }
 }
 
 export default App;
