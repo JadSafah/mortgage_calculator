@@ -8,11 +8,11 @@ function Dropdown({items}) {
 
     return (
         <div className="dd-wrapper">    
-            <div className="dd-header" onClick={() => handleDropdownClick()}>
+            <button className="dd-header" onClick={() => handleDropdownClick()}>
                 <div className="dd-header-title">{selected}</div>
-            </div>
+            </button>
             {open &&
-                <ul>
+                <ul className="dd-list">
                     {items.map(item => 
                     <li 
                         className="dd-list-items" 

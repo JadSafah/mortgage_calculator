@@ -5,11 +5,12 @@
 .dd-wrapper {
   position: relative;
   display: inline-block;
+  padding: 8px;
 }
-ul {
+.dd-list {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 8px;
   top:45px;
   right:0px;
   width: 200px;
@@ -35,10 +36,10 @@ li:hover {
   background-color: #e5e5e5;
   color: white;
 }
-.button{
+.dd-header{
   width:178px;
-  height:18px;
-  background-color:#ff3232 ;
+  height:40px;
+  background-color:#0f0d80 ;
   padding:12px;
   border-radius:5px;
   font-weight:bold;
