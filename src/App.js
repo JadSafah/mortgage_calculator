@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Dropdown from './Dropdown';
 import InputForm from './InputForm';
+import Calculator from './Calculator';
+import DisplayResults from './DisplayResults';
 
 const amortizationPeriodYears = [
   {id:1,text:"1 Year",value:1},
@@ -72,18 +74,31 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mortgageAmount: 0,
-      interestRate: 0,
-      amortizationYear: 0,
+      mortgageAmount: 100000,
+      interestRate: 5,
+      amortizationYear: 25,
       amortizationMonth: 0,
-      paymentFrequency: 0,
-      term: 0,
+      paymentFrequency: 12,
+      term: 5,
       prepaymentAmount: 0,
       prepaymentFrequency: 0,
-      startWithPayment: 0
+      startWithPayment: 0,
+      mortgagePayment: 0
     };
   }
 
+  calculateMortage = () => {
+    const mp = Calculator(this.state.mortgageAmount, this.state.interestRate, this.state.paymentFrequency, this.state.amortizationYear, this.state.amortizationMonth, this.state.term);
+    this.setState({mortgagePayment: mp});
+    /*
+    const rate = (this.state.interestRate/100)/this.state.paymentFrequency;
+    const numberOfPayments = (this.state.amortizationYear+(this.state.amortizationMonth/12))*this.state.paymentFrequency;
+    const mortgagePayment = (this.state.mortgageAmount)*(((rate)*Math.pow((1+rate),(numberOfPayments)))/((Math.pow((1+rate),(numberOfPayments)))-1));
+    console.log(mortgagePayment);
+    */
+    
+  }
+ 
   handleSelectionClick = (item, type) => this.setState({[type]:item.value});
 
   handleChange = (type, event) => {
@@ -103,7 +118,10 @@ class App extends React.Component {
           <Dropdown title="Amortization Years" items={amortizationPeriodYears} type="amortizationYear" handleSelectionClick={this.handleSelectionClick} />
           <Dropdown title="Amortization Months" items={amortizationPeriodMonths} type="amortizationMonth" handleSelectionClick={this.handleSelectionClick} />
           <Dropdown title="Payment Frequency" items={paymentFrequency} type="paymentFrequency" handleSelectionClick={this.handleSelectionClick} />
-          <Dropdown title="Term" items={term} type="paymentFrequency" handleSelectionClick={this.handleSelectionClick} />
+          <Dropdown title="Term" items={term} type="term" handleSelectionClick={this.handleSelectionClick} />
+          <button onClick={this.calculateMortage}>Calculate</button>
+          <DisplayResults mortgagePayment={this.state.mortgagePayment} />
+
       </div>
       
     )
