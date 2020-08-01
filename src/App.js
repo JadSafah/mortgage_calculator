@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import Dropdown from './Dropdown';
+//import OutsideClickAlerter from './OutsideClickAlerter';
 
 const amortizationPeriodYears = [
   {id:1,value:"1 Year"},
@@ -48,7 +49,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {}
+    this.state = {};
   }
   
   render() {
@@ -56,8 +57,8 @@ class App extends React.Component {
       <div className="App">
         <h1>Mortage Calculator</h1>
           <h2>Payment Plan</h2>
-          <Dropdown items={amortizationPeriodYears} />
-          <Dropdown items={amortizationPeriodMonths} />
+            <Dropdown items={amortizationPeriodYears} />
+            <Dropdown items={amortizationPeriodMonths} />
       </div>
       
     )
