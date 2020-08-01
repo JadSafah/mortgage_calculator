@@ -1,64 +1,109 @@
 import React from 'react';
 import './App.css';
 import Dropdown from './Dropdown';
-//import OutsideClickAlerter from './OutsideClickAlerter';
+import InputForm from './InputForm';
 
 const amortizationPeriodYears = [
-  {id:1,value:"1 Year"},
-  {id:2,value:"2 Years"},
-  {id:3,value:"3 Years"},
-  {id:4,value:"4 Years"},
-  {id:5,value:"5 Years"},
-  {id:6,value:"6 Years"},
-  {id:7,value:"7 Years"},
-  {id:8,value:"8 Years"},
-  {id:9,value:"9 Years"},
-  {id:10,value:"10 Years"},
-  {id:11,value:"11 Years"},
-  {id:12,value:"12 Years"},
-  {id:13,value:"13 Years"},
-  {id:14,value:"14 Years"},
-  {id:15,value:"15 Years"},
-  {id:16,value:"16 Years"},
-  {id:17,value:"17 Years"},
-  {id:18,value:"18 Years"},
-  {id:19,value:"19 Years"},
-  {id:20,value:"20 Years"},
-  {id:21,value:"21 Years"},
-  {id:22,value:"22 Years"},
-  {id:23,value:"23 Years"},
-  {id:24,value:"24 Years"},
-  {id:25,value:"25 Years"},
+  {id:1,text:"1 Year",value:1},
+  {id:2,text:"2 Years",value:2},
+  {id:3,text:"3 Years",value:3},
+  {id:4,text:"4 Years",value:4},
+  {id:5,text:"5 Years",value:5},
+  {id:6,text:"6 Years",value:6},
+  {id:7,text:"7 Years",value:7},
+  {id:8,text:"8 Years",value:8},
+  {id:9,text:"9 Years",value:9},
+  {id:10,text:"10 Years",value:10},
+  {id:11,text:"11 Years",value:11},
+  {id:12,text:"12 Years",value:12},
+  {id:13,text:"13 Years",value:13},
+  {id:14,text:"14 Years",value:14},
+  {id:15,text:"15 Years",value:15},
+  {id:16,text:"16 Years",value:16},
+  {id:17,text:"17 Years",value:17},
+  {id:18,text:"18 Years",value:18},
+  {id:19,text:"19 Years",value:19},
+  {id:20,text:"20 Years",value:20},
+  {id:21,text:"21 Years",value:21},
+  {id:22,text:"22 Years",value:22},
+  {id:23,text:"23 Years",value:23},
+  {id:24,text:"24 Years",value:24},
+  {id:25,text:"25 Years",value:25},
 ];
 
 const amortizationPeriodMonths = [
-  {id:1,value:"1 Month"},
-  {id:2,value:"2 Months"},
-  {id:3,value:"3 Months"},
-  {id:4,value:"4 Months"},
-  {id:5,value:"5 Months"},
-  {id:6,value:"6 Months"},
-  {id:7,value:"7 Months"},
-  {id:8,value:"8 Months"},
-  {id:9,value:"9 Months"},
-  {id:10,value:"10 Months"},
-  {id:11,value:"11 Months"}
+  {id:1,text:"1 Month",value:1},
+  {id:2,text:"2 Months",value:2},
+  {id:3,text:"3 Months",value:3},
+  {id:4,text:"4 Months",value:4},
+  {id:5,text:"5 Months",value:5},
+  {id:6,text:"6 Months",value:6},
+  {id:7,text:"7 Months",value:7},
+  {id:8,text:"8 Months",value:8},
+  {id:9,text:"9 Months",value:9},
+  {id:10,text:"10 Months",value:10},
+  {id:11,text:"11 Months",value:11}
 ];
+
+const paymentFrequency = [
+  {id:1,text:"Accelerated Weekly",value:52},
+  {id:2,text:"Weekly",value:52},
+  {id:3,text:"Accelerated Bi-weekly",value:26},
+  {id:4,text:"Bi-weekly (every 2 weeks)",value:26},
+  {id:5,text:"Semi-monthly (24x per year)",value:24},
+  {id:6,text:"Monthly (12x per year)",value:12},
+]
+
+const term = [
+  {id:1,text:"1 Year",value:1},
+  {id:2,text:"2 Years",value:2},
+  {id:3,text:"3 Years",value:3},
+  {id:4,text:"4 Years",value:4},
+  {id:5,text:"5 Years",value:5},
+  {id:6,text:"6 Years",value:6},
+  {id:7,text:"7 Years",value:7},
+  {id:8,text:"8 Years",value:8},
+  {id:9,text:"9 Years",value:9},
+  {id:10,text:"10 Years",value:10}
+]
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      mortgageAmount: 0,
+      interestRate: 0,
+      amortizationYear: 0,
+      amortizationMonth: 0,
+      paymentFrequency: 0,
+      term: 0,
+      prepaymentAmount: 0,
+      prepaymentFrequency: 0,
+      startWithPayment: 0
+    };
+  }
+
+  handleSelectionClick = (item, type) => this.setState({[type]:item.value});
+
+  handleChange = (type, event) => {
+    this.setState({[type]: event.target.value});
   }
   
+  checkState = () => console.log(this.state);
+
   render() {
     return (
       <div className="App">
         <h1>Mortage Calculator</h1>
           <h2>Payment Plan</h2>
-            <Dropdown items={amortizationPeriodYears} />
-            <Dropdown items={amortizationPeriodMonths} />
+          <button onClick={this.checkState()}>Check State</button>
+          <InputForm title="Mortgage Amount" type="mortgageAmount" handleChange={this.handleChange} />
+          <InputForm title="Interest Rate" type="interestRate" handleChange={this.handleChange} />
+          <Dropdown title="Amortization Years" items={amortizationPeriodYears} type="amortizationYear" handleSelectionClick={this.handleSelectionClick} />
+          <Dropdown title="Amortization Months" items={amortizationPeriodMonths} type="amortizationMonth" handleSelectionClick={this.handleSelectionClick} />
+          <Dropdown title="Payment Frequency" items={paymentFrequency} type="paymentFrequency" handleSelectionClick={this.handleSelectionClick} />
+          <Dropdown title="Term" items={term} type="paymentFrequency" handleSelectionClick={this.handleSelectionClick} />
       </div>
       
     )

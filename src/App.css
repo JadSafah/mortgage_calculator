@@ -4,10 +4,11 @@
 
 .dd-wrapper {
   position: relative;
-  display: inline-block;
+  display: block;
   padding: 8px;
 }
 .dd-list {
+  display: block;
   list-style-type: none;
   margin: 0;
   padding: 8px;
@@ -16,15 +17,10 @@
   width: 200px;
   background-color: white;
   font-weight:bold;
-  position: absolute;
-
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
-li a {
-  color: #000;
-  text-decoration: none;
-}
+
 li {
   padding: 8px 16px;
   border-bottom: 1px solid #e5e5e5;
