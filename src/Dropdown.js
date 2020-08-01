@@ -4,7 +4,7 @@ const Dropdown = (props) => {
 
     //state of dropdown toggle and value selected from list
     const [open, setOpen] = useState(false);
-    //const [selected, setSelected] = useState("Select value...");
+    const [selected, setSelected] = useState("");
 
     //handle button click to dropdown the list and to extract clicked value from list
     const handleDropdownClick = () => setOpen(!open);
@@ -13,7 +13,7 @@ const Dropdown = (props) => {
         <div className="dd-wrapper">  
             {props.title}
             <button className="dd-header" onClick={() => handleDropdownClick()}>
-                <div className="dd-header-title"></div>
+                <div className="dd-header-title">{selected}</div>
             </button>
             {open &&
                 <ul className="dd-list">
@@ -21,7 +21,7 @@ const Dropdown = (props) => {
                         <li 
                             className="dd-list-items"
                             key={item.id}
-                            onClick={() => {props.handleSelectionClick(item, props.type); handleDropdownClick();}}>
+                            onClick={() => {props.handleSelectionClick(item, props.type); handleDropdownClick(); setSelected(item.text);}}>
                             {item.text}
                         </li>
                     )}
