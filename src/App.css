@@ -6,15 +6,28 @@
   position: relative;
   display: block;
   padding: 8px;
+  margin: auto;
 }
+
+.dd-header{
+  width:178px;
+  height:20px;
+  margin: auto;
+  background-color:#0f0d80 ;
+  padding:12px;
+  border-radius:5px;
+  font-weight:bold;
+  color:white;
+}
+
 .dd-list {
+  position: absolute;
   display: block;
-  list-style-type: none;
-  margin: 0;
+  margin: auto;
   padding: 8px;
   top:45px;
   right:0px;
-  width: 200px;
+  width: 100%;
   background-color: white;
   font-weight:bold;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -31,25 +44,6 @@ li:last-child {
 li:hover {
   background-color: #e5e5e5;
   color: white;
-}
-.dd-header{
-  width:178px;
-  height:40px;
-  background-color:#0f0d80 ;
-  padding:12px;
-  border-radius:5px;
-  font-weight:bold;
-  color:white;
-}
-.button:before{
-  content:"";
-  position:absolute;
-  width:0px;
-  height:0px;
-  border: 10px solid;
-  border-color: white transparent transparent transparent;
-  right:6px;
-  top:18px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

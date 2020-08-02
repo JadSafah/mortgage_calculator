@@ -10,11 +10,10 @@ const Dropdown = (props) => {
     const handleDropdownClick = () => setOpen(!open);
 
     return (
-        <div className="dd-wrapper">  
-            {props.title}
-            <button className="dd-header" onClick={() => handleDropdownClick()}>
+        <div className="dd-wrapper">
+            <div className="dd-header" onClick={() => handleDropdownClick()}>
                 <div className="dd-header-title">{selected}</div>
-            </button>
+            </div> 
             {open &&
                 <ul className="dd-list">
                     {props.items.map(item => 
