@@ -3,12 +3,10 @@ import React from 'react';
 function InputForm(props) {
 
     return (
-        <form>
-            <label>
-                {props.title}
-                <input type="text" onChange={(e) => props.handleChange(props.type, e)} />
-            </label>
-        </form>
+        <div className="form-wrapper">
+            <div className="input-title">{props.title}</div>
+            <input className="input-header" type="text" value={props.state} onChange={(e) => props.handleChange(props.type, e)} />
+        </div>
     );
 }
 

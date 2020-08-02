@@ -1,77 +1,153 @@
 .App {
+  
+}
+
+.dd-wrapper, .form-wrapper {
+  position: relative;
+  height: 8vh;
+  width: 35vh;
+  text-align: center;
+  margin: auto;
+  padding: 15px 15px;
   text-align: center;
 }
 
-.dd-wrapper {
-  position: relative;
-  display: block;
-  padding: 8px;
-  margin: auto;
-}
-
-.dd-header{
-  width:178px;
-  height:20px;
-  margin: auto;
-  background-color:#0f0d80 ;
-  padding:12px;
-  border-radius:5px;
-  font-weight:bold;
-  color:white;
-}
-
-.dd-list {
+.dd-title, .input-title {
   position: absolute;
-  display: block;
-  margin: auto;
-  padding: 8px;
-  top:45px;
-  right:0px;
-  width: 100%;
+  font-weight: bold;
+  top: 12px;
+  height: 3vh;
+  width: 35vh;
+}
+
+.input-header {
+  position: relative;
+  bottom: 12px;
+  text-align: center;
+  height: 5vh;
+  width: 35vh;
+  margin-top: 10px;
+  border-radius: 4px;
   background-color: white;
-  font-weight:bold;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  font-size: medium;
+  cursor: auto;
+  border: blue;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.dd-header {
+    position: absolute;
+    bottom: 12px;
+    text-align: center;
+    height: 5vh;
+    width: 35vh;
+    border-radius: 4px;
+    background-color: white;
+    font-size: medium;
+    cursor: pointer;
+    border: blue;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.dd-header:hover {
+  background-color: rgb(212, 209, 209);
+}
+
+.dd-header-title {
+  position: absolute;
+  height: 5vh;
+  width: 35vh;
+  text-align: center;
+}
+
+.dd-header-arrow {
+  position: absolute;
+  right: 0;
+  height: 5vh;
+  width: 5vh;
+}
+
+.dd-list-wrapper {
+  position: absolute;
+  width: 35vh;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 9vh;
+  border-radius: 4px;
+  background-color: white;
   z-index: 1;
 }
 
-li {
-  padding: 8px 16px;
-  border-bottom: 1px solid #e5e5e5;
-}
-li:last-child {
-  border-bottom: none;
-}
-li:hover {
-  background-color: #e5e5e5;
-  color: white;
+.dd-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-radius: 4px;
+  z-index: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.dd-list-items {
+  text-align: center;
+  border-radius: 4px;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px;
+  border-bottom-style: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.dd-list-items:hover {
+  background-color: rgb(212, 209, 209);
 }
 
-.App-link {
-  color: #61dafb;
+body {
+  background-color: white;
+  padding: 15px 15px;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+p, input {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+i {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.shadow {
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc;
 }

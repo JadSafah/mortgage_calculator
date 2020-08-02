@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import Dropdown from './Dropdown';
 import InputForm from './InputForm';
-import Calculator from './Calculator';
 import DisplayResults from './DisplayResults';
 
 const amortizationPeriodYears = [
@@ -34,6 +33,7 @@ const amortizationPeriodYears = [
 ];
 
 const amortizationPeriodMonths = [
+  {id:0,text:"0 Month",value:0},
   {id:1,text:"1 Month",value:1},
   {id:2,text:"2 Months",value:2},
   {id:3,text:"3 Months",value:3},
@@ -76,10 +76,10 @@ class App extends React.Component {
     this.state = {
       mortgageAmount: 100000,
       interestRate: 5,
-      amortizationYear: 25,
-      amortizationMonth: 0,
-      paymentFrequency: 12,
-      term: 5,
+      amortizationYear: {id:25,text:"25 Years",value:25},
+      amortizationMonth: {id:0,text:"0 Month",value:0},
+      paymentFrequency: {id:6,text:"Monthly (12x per year)",value:12},
+      term: {id:5,text:"5 Years",value:5},
       prepaymentAmount: 0,
       prepaymentFrequency: 0,
       startWithPayment: 0,
@@ -87,19 +87,19 @@ class App extends React.Component {
     };
   }
 
+  /*
   calculateMortage = () => {
     const mp = Calculator(this.state.mortgageAmount, this.state.interestRate, this.state.paymentFrequency, this.state.amortizationYear, this.state.amortizationMonth, this.state.term);
     this.setState({mortgagePayment: mp});
-    /*
+    
     const rate = (this.state.interestRate/100)/this.state.paymentFrequency;
     const numberOfPayments = (this.state.amortizationYear+(this.state.amortizationMonth/12))*this.state.paymentFrequency;
     const mortgagePayment = (this.state.mortgageAmount)*(((rate)*Math.pow((1+rate),(numberOfPayments)))/((Math.pow((1+rate),(numberOfPayments)))-1));
     console.log(mortgagePayment);
-    */
-    
   }
+  */
  
-  handleSelectionClick = (item, type) => this.setState({[type]:item.value});
+  handleSelectionClick = (item, type) => this.setState({[type]:item});
 
   handleChange = (type, event) => {
     this.setState({[type]: event.target.value});
@@ -111,19 +111,17 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Mortage Calculator</h1>
-          <h2>Payment Plan</h2>
-          <button onClick={this.checkState()}>Check State</button>
-          <InputForm title="Mortgage Amount" type="mortgageAmount" handleChange={this.handleChange} />
-          <InputForm title="Interest Rate" type="interestRate" handleChange={this.handleChange} />
-          <Dropdown title="Amortization Years" items={amortizationPeriodYears} type="amortizationYear" handleSelectionClick={this.handleSelectionClick} />
-          <Dropdown title="Amortization Months" items={amortizationPeriodMonths} type="amortizationMonth" handleSelectionClick={this.handleSelectionClick} />
-          <Dropdown title="Payment Frequency" items={paymentFrequency} type="paymentFrequency" handleSelectionClick={this.handleSelectionClick} />
-          <Dropdown title="Term" items={term} type="term" handleSelectionClick={this.handleSelectionClick} />
-          <button onClick={this.calculateMortage}>Calculate</button>
-          <DisplayResults mortgagePayment={this.state.mortgagePayment} />
-
+          <div className="paymentPlan">
+            <h2>Payment Plan</h2>
+            <InputForm title="Mortgage Amount ($)" state={this.state.mortgageAmount} type="mortgageAmount" handleChange={this.handleChange} />
+            <InputForm title="Interest Rate (%)" state={this.state.interestRate} type="interestRate" handleChange={this.handleChange} />
+            <Dropdown title="Amortization Years" state={this.state.amortizationYear} items={amortizationPeriodYears} type="amortizationYear" handleSelectionClick={this.handleSelectionClick} />
+            <Dropdown title="Amortization Months" state={this.state.amortizationMonth} items={amortizationPeriodMonths} type="amortizationMonth" handleSelectionClick={this.handleSelectionClick} />
+            <Dropdown title="Payment Frequency" state={this.state.paymentFrequency} items={paymentFrequency} type="paymentFrequency" handleSelectionClick={this.handleSelectionClick} />
+            <Dropdown title="Term" state={this.state.term} items={term} type="term" handleSelectionClick={this.handleSelectionClick} />
+            <DisplayResults mortgageAmount={this.state.mortgageAmount} interestRate={this.state.interestRate} paymentFrequency={this.state.paymentFrequency} amortizationYear={this.state.amortizationYear} amortizationMonth={this.state.amortizationMonth} term={this.state.term} />
+          </div>
       </div>
-      
     )
   }
 }
