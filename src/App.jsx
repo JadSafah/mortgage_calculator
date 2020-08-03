@@ -25,10 +25,13 @@ class App extends React.Component {
     };
   }
  
+  //handle selected element from dropdown list
   handleSelectionClick = (item, type) => this.setState({[type]:item});
 
+  //handle change from input form
   handleChange = (type, event) => {
 
+    //if the mortgage amount is not in the specified range, set mortgageAmountError to true
     switch(type+"Error") {
       case "mortgageAmountError":
 
@@ -38,9 +41,9 @@ class App extends React.Component {
           this.setState({[type+"Error"]: true})
         }
         this.setState({[type]: event.target.value});
-        console.log(this.state)
         break;
     
+      //if the interest rate is not in the specified range, set interestRateError to true
       case "interestRateError":
 
         if(event.target.value < 50 && event.target.value > 0) {
@@ -49,7 +52,6 @@ class App extends React.Component {
           this.setState({[type+"Error"]: true})
         }
         this.setState({[type]: event.target.value});
-        console.log(this.state)
         break;
       
       default:

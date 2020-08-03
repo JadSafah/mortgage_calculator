@@ -1,3 +1,4 @@
+//function that calculates the mortgage
 function Calculator(mortgageAmount, interestRate, paymentFrequency, amortizationYear, amortizationMonth, term) {
     const r = (interestRate/100)/paymentFrequency;
     const n = (amortizationYear+(amortizationMonth/12))*paymentFrequency;

@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 
 const Dropdown = (props) => {
 
-    //state of dropdown toggle and value selected from list
+    //state of dropdown toggle
     const [open, setOpen] = useState(false);
-    //const [selected, setSelected] = useState("");
 
-    //handle button click to dropdown the list and to extract clicked value from list
+    //toggle the open state to either open or close the dropdown list
     const handleDropdownClick = () => setOpen(!open);
 
     return (

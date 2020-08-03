@@ -3,6 +3,7 @@ import Calculator from './Calculator';
 
 function DisplayResults(props) {
 
+    //if there is an error in one of the input fields, display "Invalid fields" or else display the calculated value
     return (
         <div className="display">
             {props.mortgageAmountError || props.interestRateError ?
