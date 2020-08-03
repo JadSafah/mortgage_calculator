@@ -4,7 +4,7 @@ function Calculator(mortgageAmount, interestRate, paymentFrequency, amortization
     const numerator = (r)*(Math.pow(1+r,n));
     const denominator = (Math.pow(1+r,n))-1;
     const mortgagePayment = (mortgageAmount)*(numerator/denominator);
-    return mortgagePayment;
+    return Math.round((mortgagePayment + Number.EPSILON) * 100) / 100;
   }
 
   export default Calculator;
