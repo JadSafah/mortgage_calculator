@@ -135,7 +135,7 @@ class App extends React.Component {
             <Dropdown title="Amortization Months" state={this.state.amortizationMonth} items={amortizationPeriodMonths} type="amortizationMonth" handleSelectionClick={this.handleSelectionClick} />
             <Dropdown title="Payment Frequency" state={this.state.paymentFrequency} items={paymentFrequency} type="paymentFrequency" handleSelectionClick={this.handleSelectionClick} />
             <Dropdown title="Term" state={this.state.term} items={term} type="term" handleSelectionClick={this.handleSelectionClick} />
-            <DisplayResults mortgageAmount={this.state.mortgageAmount} mortageAmountError={this.state.mortgageAmountError} interestRate={this.state.interestRate} interestRateError={this.state.interestRateError} paymentFrequency={this.state.paymentFrequency} amortizationYear={this.state.amortizationYear} amortizationMonth={this.state.amortizationMonth} term={this.state.term} />
+            <DisplayResults mortgageAmount={this.state.mortgageAmount} mortgageAmountError={this.state.mortgageAmountError} interestRate={this.state.interestRate} interestRateError={this.state.interestRateError} paymentFrequency={this.state.paymentFrequency} amortizationYear={this.state.amortizationYear} amortizationMonth={this.state.amortizationMonth} term={this.state.term} />
           </div>
       </div>
     )

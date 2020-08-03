@@ -106,6 +106,15 @@
 .dd-list-items:hover {
   background-color: rgb(212, 209, 209);
 }
+
+.error-icon {
+  position: absolute;
+  color: red;
+  right: 16px;
+  bottom: 19px;
+  z-index: 1;
+}
+
 .error:focus {
   outline-color: red;
   border-color: red;
@@ -113,6 +122,11 @@
 
 .error {
   border-color: red;
+  color: red;
+}
+
+.alert-circle-outline {
+  color: red;
 }
 
 body {
