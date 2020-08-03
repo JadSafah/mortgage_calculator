@@ -17,6 +17,15 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### Implementation Plan
+
+1) Create generic base components (dropdown list, input form, ...)
+2) Create UI using the components
+3) Develop mortgage calculation function
+4) Relay stateful component inputs to calculation function
+5) Implement error handling for input fields
+6) Develop unit tests for mortgage calculations
+
 ### Assumptions
 
 Mortage Payment formula =
@@ -37,6 +46,5 @@ Mortage Payment formula =
 
 ### Challenges
 
-- Outside click alerter: drop down list closes when you click outside the list.
-- Mortgage payment calculations: Did not implement the prepayment plan and did not adjust the payment frequencies when an accelerate option is selected.
--
+- Outside click alerter: Dropdown list should close when you click outside the list.
+- Mortgage payment calculations: Couldn't implement the prepayment plan and the accelerate options for payment frequencies.
