@@ -47,4 +47,5 @@ Mortage Payment formula =
 ### Challenges
 
 - Outside click alerter: Dropdown list should close when you click outside the list.
-- Mortgage payment calculations: Couldn't implement the prepayment plan and the accelerate options for payment frequencies.
+- Mortgage payment calculations: Implementing prepayment plan, the term and the accelerate options for payment frequencies. Consequently, running the tests failed since the obtained results were different than the expected results (The results expected are the results obtained from Government of Canada's Mortgage Calculator).
+- UI design: Input form and dropdown list editing.
