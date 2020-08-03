@@ -1,6 +1,8 @@
 import Calculator from './Calculator';
 
-describe("Mortgage Payment Calculation", function() {
-    // specification code
-    //Calculator(mortgageAmount, interestRate, paymentFrequency, amortizationYear, amortizationMonth, term)
-  });
+test("Mortgage Payment Calculation", function() {
+
+    const payment = Calculator(10000, 3.2, 12, 25, 0, 5);
+    expect(payment).toBe(48.46789818466372);
+    console.log( 'payment', payment);
+});

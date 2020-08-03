@@ -75,7 +75,9 @@ class App extends React.Component {
     super(props);
     this.state = {
       mortgageAmount: 100000,
+      mortgageAmountError: false,
       interestRate: 5,
+      interestRateError: false,
       amortizationYear: {id:25,text:"25 Years",value:25},
       amortizationMonth: {id:0,text:"0 Month",value:0},
       paymentFrequency: {id:6,text:"Monthly (12x per year)",value:12},
@@ -86,40 +88,54 @@ class App extends React.Component {
       mortgagePayment: 0
     };
   }
-
-  /*
-  calculateMortage = () => {
-    const mp = Calculator(this.state.mortgageAmount, this.state.interestRate, this.state.paymentFrequency, this.state.amortizationYear, this.state.amortizationMonth, this.state.term);
-    this.setState({mortgagePayment: mp});
-    
-    const rate = (this.state.interestRate/100)/this.state.paymentFrequency;
-    const numberOfPayments = (this.state.amortizationYear+(this.state.amortizationMonth/12))*this.state.paymentFrequency;
-    const mortgagePayment = (this.state.mortgageAmount)*(((rate)*Math.pow((1+rate),(numberOfPayments)))/((Math.pow((1+rate),(numberOfPayments)))-1));
-    console.log(mortgagePayment);
-  }
-  */
  
   handleSelectionClick = (item, type) => this.setState({[type]:item});
 
   handleChange = (type, event) => {
-    this.setState({[type]: event.target.value});
+
+    switch(type+"Error") {
+      case "mortgageAmountError":
+
+        if(event.target.value < 1000000 && event.target.value > 0) {
+          this.setState({[type+"Error"]: false})
+        } else {
+          this.setState({[type+"Error"]: true})
+        }
+        this.setState({[type]: event.target.value});
+        console.log(this.state)
+        break;
+    
+      case "interestRateError":
+
+        if(event.target.value < 50 && event.target.value > 0) {
+          this.setState({[type+"Error"]: false})
+        } else {
+          this.setState({[type+"Error"]: true})
+        }
+        this.setState({[type]: event.target.value});
+        console.log(this.state)
+        break;
+      
+      default:
+        break;
+
+    
   }
-  
-  checkState = () => console.log(this.state);
+}
 
   render() {
     return (
       <div className="App">
-        <h1>Mortage Calculator</h1>
+        <h1>Mortgage Calculator</h1>
           <div className="paymentPlan">
             <h2>Payment Plan</h2>
-            <InputForm title="Mortgage Amount ($)" state={this.state.mortgageAmount} type="mortgageAmount" handleChange={this.handleChange} />
-            <InputForm title="Interest Rate (%)" state={this.state.interestRate} type="interestRate" handleChange={this.handleChange} />
+            <InputForm title="Mortgage Amount ($)" error={this.state.mortgageAmountError} state={this.state.mortgageAmount} type="mortgageAmount" handleChange={this.handleChange} />
+            <InputForm title="Interest Rate (%)" error={this.state.interestRateError} state={this.state.interestRate} type="interestRate" handleChange={this.handleChange} />
             <Dropdown title="Amortization Years" state={this.state.amortizationYear} items={amortizationPeriodYears} type="amortizationYear" handleSelectionClick={this.handleSelectionClick} />
             <Dropdown title="Amortization Months" state={this.state.amortizationMonth} items={amortizationPeriodMonths} type="amortizationMonth" handleSelectionClick={this.handleSelectionClick} />
             <Dropdown title="Payment Frequency" state={this.state.paymentFrequency} items={paymentFrequency} type="paymentFrequency" handleSelectionClick={this.handleSelectionClick} />
             <Dropdown title="Term" state={this.state.term} items={term} type="term" handleSelectionClick={this.handleSelectionClick} />
-            <DisplayResults mortgageAmount={this.state.mortgageAmount} interestRate={this.state.interestRate} paymentFrequency={this.state.paymentFrequency} amortizationYear={this.state.amortizationYear} amortizationMonth={this.state.amortizationMonth} term={this.state.term} />
+            <DisplayResults mortgageAmount={this.state.mortgageAmount} mortageAmountError={this.state.mortgageAmountError} interestRate={this.state.interestRate} interestRateError={this.state.interestRateError} paymentFrequency={this.state.paymentFrequency} amortizationYear={this.state.amortizationYear} amortizationMonth={this.state.amortizationMonth} term={this.state.term} />
           </div>
       </div>
     )
